@@ -1,5 +1,5 @@
 /*
- *   The main file of the program, handles arguments and the program as a whole.
+ *   The code to permute strings is implemented in this file.
  *   Copyright (C) 2022  Player-5
  *
  *   anna-graham is free software: you can redistribute it and/or modify
@@ -17,21 +17,24 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>
 
-#include <string.h>
+void swap(char *a, char *b) {
+  char temp = *a;
+  *a = *b;
+  *b = temp;
+  return;
+}
 
-#include "permute.h"
-
-int main(const int argc, char *argv[]) {
-  if (2 != argc) {
-    printf("Only 1 argument allowed %d were passed.\n", argc - 1);
-    return EXIT_FAILURE;
+void permute(char *phrase, const int left, const int right) {
+  if (left == right) {
+    printf("%s\n", phrase);
   }
-
-  const int LENGTH = strlen(argv[1]);
-
-  permute(argv[1], 0, LENGTH);
-
-  return EXIT_SUCCESS;
+  else {
+    for (int ii = left; ii < right; ii++) {
+      swap(phrase + left, phrase + ii);
+      permute(phrase, left + 1, right);
+      swap(phrase + left, phrase + ii);
+    }
+  }
+  return;
 }

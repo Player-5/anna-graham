@@ -1,5 +1,5 @@
 /*
- *   The main file of the program, handles arguments and the program as a whole.
+ *   Headers for the permutation code.
  *   Copyright (C) 2022  Player-5
  *
  *   anna-graham is free software: you can redistribute it and/or modify
@@ -16,22 +16,8 @@
  *   along with anna-graham.  If not, see <https://www.gnu.org/licenses/>
  */
 
-#include <stdio.h>
-#include <stdlib.h>
+#pragma once
 
-#include <string.h>
+void swap(char *a, char *b);
 
-#include "permute.h"
-
-int main(const int argc, char *argv[]) {
-  if (2 != argc) {
-    printf("Only 1 argument allowed %d were passed.\n", argc - 1);
-    return EXIT_FAILURE;
-  }
-
-  const int LENGTH = strlen(argv[1]);
-
-  permute(argv[1], 0, LENGTH);
-
-  return EXIT_SUCCESS;
-}
+void permute(char *phrase, const int left, const int right);
