@@ -19,22 +19,38 @@
 #include <stdio.h>
 
 void swap(char *a, char *b) {
+
+  // creates a char to hold the value at a's memory location
   char temp = *a;
+
+  // swaps a and b
   *a = *b;
   *b = temp;
+
+  // returns void to show end of the function
   return;
 }
 
 void permute(char *phrase, const int left, const int right) {
+  // when no swaps are possible outputs the permuted string
   if (left == right) {
+    // prints the phrase to the terminal
     printf("%s\n", phrase);
   }
   else {
+    // loops over each char in the swap range
     for (int ii = left; ii < right; ii++) {
+
+      // preforms a swap on the leftest char and the ii char
       swap(phrase + left, phrase + ii);
+
+      // recursively repeats until all possible swaps are made
       permute(phrase, left + 1, right);
+
+      // undoes the swap operation
       swap(phrase + left, phrase + ii);
     }
   }
+  // returns void to show the end of the function
   return;
 }

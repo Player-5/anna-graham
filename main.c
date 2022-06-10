@@ -24,14 +24,19 @@
 #include "permute.h"
 
 int main(const int argc, char *argv[]) {
+  // checks for a valid number of arguments
   if (2 != argc) {
+    // prints error message as well as returning a fail state
     printf("Only 1 argument allowed %d were passed.\n", argc - 1);
     return EXIT_FAILURE;
   }
 
+  // gets the length of the given string
   const int LENGTH = strlen(argv[1]);
 
+  // calls the permutation code
   permute(argv[1], 0, LENGTH);
 
+  // returns that the program has executed successfully
   return EXIT_SUCCESS;
 }
