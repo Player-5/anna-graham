@@ -17,10 +17,12 @@
 CC=gcc
 CFLAGS=-g -Wall -Werror -O3 -pipe
 
+DIR=src/
+
 NAME=anna-graham
-FILES=main.o permute.o
+FILES=$(DIR)main.o $(DIR)permute.o
 
 anna: $(FILES)
 	$(CC) $(CFLAGS) $(FILES) -o $(NAME)
 clean:
-	rm *.o
+	rm $(DIR)*.o
